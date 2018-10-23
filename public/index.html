@@ -1,0 +1,76 @@
+<!DOCTYPE <!DOCTYPE html>
+<html ng-app="userManagementApp">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./resource/style.css" />
+    <script src="./resource/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script> -->
+</head>
+<body>
+    <h1>User Management Page</h1>
+    <div class="page" ng-controller="userListController as list">
+        <div class="add-section">
+            Add a user to the user list
+            <button ng-click="list.addUser()">Add</button>
+            <form ng-if="list.add">
+                <div class="section">
+                    <label>Name</label>
+                    <input type="text" ng-model="list.newUser.name"/>
+                </div>
+                <div class="section">
+                    <label>Email</label>
+                    <input type="text" ng-model="list.newUser.email"/>
+                </div>
+                <div class="section">
+                    <label>Age</label>
+                    <input type="text" ng-model="list.newUser.age"/>
+                </div>
+                <button class="btn" ng-click="list.submitUser()">Add User</button>
+            </form>
+        </div>
+        <table ng-if="!list.isEdit">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in list.users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.age}}</td>
+                    <td>
+                        <button ng-click="list.editUser(user)">Edit</button>
+                        <button ng-click="list.deleteUser(user.name)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="edit-user" ng-if="list.isEdit">
+            <h2>Update the User</h2>
+            <form>
+                    <div class="section">
+                        <label>Name</label>
+                        <input type="text" ng-model="list.editUser.name"/>
+                    </div>
+                    <div class="section">
+                        <label>Email</label>
+                        <input type="text" ng-model="list.editUser.email"/>
+                    </div>
+                    <div class="section">
+                        <label>Age</label>
+                        <input type="text" ng-model="list.editUser.age"/>
+                    </div>
+                    <button class="btn" ng-click="list.updateUser()">Update User</button>
+                </form>
+        </div>
+    </div>
+    <script src="./resource/app.js"></script>
+</body>
+</html>

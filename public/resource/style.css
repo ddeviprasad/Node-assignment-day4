@@ -1,0 +1,19 @@
+table {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px 15px;
+    border: 1px solid grey;
+}
+.add-section {
+    padding: 10px;
+}
+
+.btn {
+    padding: 5px;
+}
+
+.section {
+    margin: 10px;
+}

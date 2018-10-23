@@ -31,11 +31,10 @@ angular.module('userManagementApp', [])
         });
     };
 
-    list.deleteUser = function(name) {
+    list.deleteUser = function(id) {
         $http({
-            method: 'POST',
-            url: '/removeUser',
-            data: { name }
+            method: 'DELETE',
+            url: '/removeUser/'+ id
         }).then((response) => {
             console.log('response: ', response);
             getUsers();
@@ -46,17 +45,17 @@ angular.module('userManagementApp', [])
 
     list.editUser = function(user) {
         list.isEdit = true;
-        list.editUser = user;
+        list.eUser = user;
     }
 
     list.updateUser = function() {
         $http({
-            method: 'POST',
+            method: 'PATCH',
             url: '/updateUser',
-            data: list.editUser
+            data: list.eUser
         }).then((response) => {
             console.log('response: ', response);
-            list.editUser = {};
+            list.eUser = {};
             list.isEdit = false;
             getUsers();
         }, (err) => {

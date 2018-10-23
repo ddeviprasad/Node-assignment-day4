@@ -31,7 +31,7 @@
                 <button class="btn" ng-click="list.submitUser()">Add User</button>
             </form>
         </div>
-        <table ng-if="!list.isEdit">
+        <table ng-show="!list.isEdit">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -47,25 +47,25 @@
                     <td>{{user.age}}</td>
                     <td>
                         <button ng-click="list.editUser(user)">Edit</button>
-                        <button ng-click="list.deleteUser(user.name)">Delete</button>
+                        <button ng-click="list.deleteUser(user._id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="edit-user" ng-if="list.isEdit">
+        <div class="edit-user" ng-show="list.isEdit">
             <h2>Update the User</h2>
             <form>
                     <div class="section">
                         <label>Name</label>
-                        <input type="text" ng-model="list.editUser.name"/>
+                        <input type="text" ng-model="list.eUser.name"/>
                     </div>
                     <div class="section">
                         <label>Email</label>
-                        <input type="text" ng-model="list.editUser.email"/>
+                        <input type="text" ng-model="list.eUser.email"/>
                     </div>
                     <div class="section">
                         <label>Age</label>
-                        <input type="text" ng-model="list.editUser.age"/>
+                        <input type="text" ng-model="list.eUser.age"/>
                     </div>
                     <button class="btn" ng-click="list.updateUser()">Update User</button>
                 </form>
